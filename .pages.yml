@@ -1,0 +1,580 @@
+media:
+  input: static/assets/uploads
+  output: /assets/uploads
+  categories:
+  - image
+  rename: safe
+content:
+- name: settings
+  label: Réglages (coordonnées, Impressum, photo)
+  type: file
+  path: content/settings.json
+  format: json
+  fields:
+  - name: owner_name
+    label: Votre nom
+    type: string
+    description: Affiché dans l'Impressum et les données structurées (Google).
+  - name: company_name
+    label: Raison sociale (Firma)
+    type: string
+    description: Nom officiel complet, avec la forme juridique (ex. « … e.U. »). Affiché dans l'Impressum
+      et le pied de page.
+  - name: email
+    label: Adresse e-mail
+    type: string
+    description: Affichée dans la section Contact et l'Impressum.
+  - name: phone
+    label: Téléphone (optionnel)
+    type: string
+    description: 'S''affiche dans Contact et Impressum uniquement s''il est rempli. Format : +43 699 …'
+  - name: linkedin
+    label: Lien LinkedIn
+    type: string
+    description: Adresse complète du profil (https://www.linkedin.com/in/…).
+  - name: street
+    label: Rue et numéro
+    type: string
+  - name: postal_code
+    label: Code postal
+    type: string
+  - name: city
+    label: Ville (en allemand)
+    type: string
+    description: Utilisée dans l'Impressum et pour Google (ex. Wien).
+  - name: country
+    label: Pays (en allemand)
+    type: string
+    description: Pour l'Impressum (ex. Österreich).
+  - name: uid
+    label: Numéro UID (TVA)
+    type: string
+    description: Ex. ATU12345678. Tant que ce champ est vide, « à venir / folgt / to follow » s'affiche
+      dans l'Impressum.
+  - name: fn_number
+    label: Numéro de registre du commerce (Firmenbuch)
+    type: string
+    description: Ex. FN 123456 a
+  - name: fn_court
+    label: Tribunal du registre (Firmenbuchgericht)
+    type: string
+    description: Ex. Handelsgericht Wien
+  - name: authority
+    label: Autorité de tutelle (Gewerbebehörde)
+    type: string
+    description: Ex. Magistrat der Stadt Wien
+  - name: chamber
+    label: Chambre professionnelle (optionnel)
+    type: string
+    description: Ex. WKÖ, WK Wien, Fachgruppe … — la ligne n’apparaît que si ce champ est rempli.
+  - name: photo
+    label: Photo de présentation
+    type: image
+    description: 'Remplacer la photo : cliquez, importez la nouvelle image (JPG ou PNG, idéalement < 300
+      Ko).'
+  - name: photo_credit
+    label: Crédit photo
+    type: string
+    description: Ex. © Christian Jobst. Laisser vide pour ne rien afficher.
+  - name: analytics_token
+    label: 'Statistiques : jeton Cloudflare Web Analytics (optionnel)'
+    type: string
+    description: Laisser vide tant que l'outil n'est pas créé. Une fois rempli, les statistiques sont
+      activées et la page de confidentialité le mentionne.
+  operations:
+    delete: false
+- name: fr
+  label: Textes — Français
+  type: file
+  path: content/fr.json
+  format: json
+  fields:
+  - name: meta
+    label: Référencement (Google)
+    type: object
+    fields:
+    - name: title
+      label: Titre de la page (onglet du navigateur et Google)
+      type: string
+      description: 'Idéal : 50 à 65 caractères.'
+      options:
+        maxlength: 90
+    - name: description
+      label: Description (extrait Google)
+      type: text
+      description: 'Idéal : 140 à 160 caractères.'
+      options:
+        maxlength: 220
+  - name: hero
+    label: Présentation (haut de page)
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre au-dessus du nom
+      type: string
+    - name: name
+      label: Nom
+      type: string
+    - name: subtitle
+      label: Sous-titre (doré, en italique)
+      type: string
+    - name: bio
+      label: Mini-CV — un paragraphe par ligne
+      type: text
+      description: 4 paragraphes courts rendent le mieux.
+      list:
+        min: 1
+        max: 6
+    - name: photo_alt
+      label: Description de la photo (accessibilité et référencement)
+      type: string
+  - name: services
+    label: Prestations
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: intro
+      label: Introduction
+      type: text
+    - name: intro_note
+      label: Phrase « sur mesure »
+      type: text
+    - name: items
+      label: Les 6 prestations
+      type: object
+      fields:
+      - name: title
+        label: Intitulé
+        type: string
+      - name: text
+        label: Description courte
+        type: text
+      list:
+        min: 6
+        max: 6
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+  - name: testimonials
+    label: Témoignages
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: quotes
+      label: Citations
+      type: object
+      fields:
+      - name: text
+        label: Citation
+        type: text
+      - name: author
+        label: Auteur
+        type: string
+        description: Ex. Prénom Nom, Fonction — Entreprise
+      list:
+        max: 6
+        collapsible:
+          collapsed: false
+          summary: '{author}'
+      description: Supprimez toutes les citations pour masquer entièrement la section.
+  - name: faq
+    label: Questions fréquentes
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre
+      type: string
+    - name: title
+      label: Titre
+      type: string
+    - name: items
+      label: Questions
+      type: object
+      list: true
+      fields:
+      - name: q
+        label: Question
+        type: string
+      - name: a
+        label: Réponse
+        type: text
+  - name: contact
+    label: Contact
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: btn_mail
+      label: Bouton e-mail
+      type: string
+    - name: btn_linkedin
+      label: Bouton LinkedIn
+      type: string
+  - name: impressum
+    label: Impressum (mentions légales)
+    type: object
+    fields:
+    - name: city
+      label: Ville (dans cette langue)
+      type: string
+      description: Ex. Vienne / Wien / Vienna, affichée dans l’adresse de l’Impressum.
+    - name: title
+      label: Titre
+      type: string
+  - name: footer
+    label: Pied de page
+    type: object
+    fields:
+    - name: about
+      label: Texte de présentation
+      type: text
+    - name: privacy_label
+      label: Libellé du lien confidentialité
+      type: string
+  operations:
+    delete: false
+- name: de
+  label: Textes — Deutsch
+  type: file
+  path: content/de.json
+  format: json
+  fields:
+  - name: meta
+    label: Référencement (Google)
+    type: object
+    fields:
+    - name: title
+      label: Titre de la page (onglet du navigateur et Google)
+      type: string
+      description: 'Idéal : 50 à 65 caractères.'
+      options:
+        maxlength: 90
+    - name: description
+      label: Description (extrait Google)
+      type: text
+      description: 'Idéal : 140 à 160 caractères.'
+      options:
+        maxlength: 220
+  - name: hero
+    label: Présentation (haut de page)
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre au-dessus du nom
+      type: string
+    - name: name
+      label: Nom
+      type: string
+    - name: subtitle
+      label: Sous-titre (doré, en italique)
+      type: string
+    - name: bio
+      label: Mini-CV — un paragraphe par ligne
+      type: text
+      description: 4 paragraphes courts rendent le mieux.
+      list:
+        min: 1
+        max: 6
+    - name: photo_alt
+      label: Description de la photo (accessibilité et référencement)
+      type: string
+  - name: services
+    label: Prestations
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: intro
+      label: Introduction
+      type: text
+    - name: intro_note
+      label: Phrase « sur mesure »
+      type: text
+    - name: items
+      label: Les 6 prestations
+      type: object
+      fields:
+      - name: title
+        label: Intitulé
+        type: string
+      - name: text
+        label: Description courte
+        type: text
+      list:
+        min: 6
+        max: 6
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+  - name: testimonials
+    label: Témoignages
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: quotes
+      label: Citations
+      type: object
+      fields:
+      - name: text
+        label: Citation
+        type: text
+      - name: author
+        label: Auteur
+        type: string
+        description: Ex. Prénom Nom, Fonction — Entreprise
+      list:
+        max: 6
+        collapsible:
+          collapsed: false
+          summary: '{author}'
+      description: Supprimez toutes les citations pour masquer entièrement la section.
+  - name: faq
+    label: Questions fréquentes
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre
+      type: string
+    - name: title
+      label: Titre
+      type: string
+    - name: items
+      label: Questions
+      type: object
+      list: true
+      fields:
+      - name: q
+        label: Question
+        type: string
+      - name: a
+        label: Réponse
+        type: text
+  - name: contact
+    label: Contact
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: btn_mail
+      label: Bouton e-mail
+      type: string
+    - name: btn_linkedin
+      label: Bouton LinkedIn
+      type: string
+  - name: impressum
+    label: Impressum (mentions légales)
+    type: object
+    fields:
+    - name: city
+      label: Ville (dans cette langue)
+      type: string
+      description: Ex. Vienne / Wien / Vienna, affichée dans l’adresse de l’Impressum.
+    - name: title
+      label: Titre
+      type: string
+  - name: footer
+    label: Pied de page
+    type: object
+    fields:
+    - name: about
+      label: Texte de présentation
+      type: text
+    - name: privacy_label
+      label: Libellé du lien confidentialité
+      type: string
+  operations:
+    delete: false
+- name: en
+  label: Textes — English
+  type: file
+  path: content/en.json
+  format: json
+  fields:
+  - name: meta
+    label: Référencement (Google)
+    type: object
+    fields:
+    - name: title
+      label: Titre de la page (onglet du navigateur et Google)
+      type: string
+      description: 'Idéal : 50 à 65 caractères.'
+      options:
+        maxlength: 90
+    - name: description
+      label: Description (extrait Google)
+      type: text
+      description: 'Idéal : 140 à 160 caractères.'
+      options:
+        maxlength: 220
+  - name: hero
+    label: Présentation (haut de page)
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre au-dessus du nom
+      type: string
+    - name: name
+      label: Nom
+      type: string
+    - name: subtitle
+      label: Sous-titre (doré, en italique)
+      type: string
+    - name: bio
+      label: Mini-CV — un paragraphe par ligne
+      type: text
+      description: 4 paragraphes courts rendent le mieux.
+      list:
+        min: 1
+        max: 6
+    - name: photo_alt
+      label: Description de la photo (accessibilité et référencement)
+      type: string
+  - name: services
+    label: Prestations
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: intro
+      label: Introduction
+      type: text
+    - name: intro_note
+      label: Phrase « sur mesure »
+      type: text
+    - name: items
+      label: Les 6 prestations
+      type: object
+      fields:
+      - name: title
+        label: Intitulé
+        type: string
+      - name: text
+        label: Description courte
+        type: text
+      list:
+        min: 6
+        max: 6
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+  - name: testimonials
+    label: Témoignages
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: quotes
+      label: Citations
+      type: object
+      fields:
+      - name: text
+        label: Citation
+        type: text
+      - name: author
+        label: Auteur
+        type: string
+        description: Ex. Prénom Nom, Fonction — Entreprise
+      list:
+        max: 6
+        collapsible:
+          collapsed: false
+          summary: '{author}'
+      description: Supprimez toutes les citations pour masquer entièrement la section.
+  - name: faq
+    label: Questions fréquentes
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre
+      type: string
+    - name: title
+      label: Titre
+      type: string
+    - name: items
+      label: Questions
+      type: object
+      list: true
+      fields:
+      - name: q
+        label: Question
+        type: string
+      - name: a
+        label: Réponse
+        type: text
+  - name: contact
+    label: Contact
+    type: object
+    fields:
+    - name: eyebrow
+      label: Petit titre de section
+      type: string
+    - name: title
+      label: Titre de section
+      type: string
+    - name: btn_mail
+      label: Bouton e-mail
+      type: string
+    - name: btn_linkedin
+      label: Bouton LinkedIn
+      type: string
+  - name: impressum
+    label: Impressum (mentions légales)
+    type: object
+    fields:
+    - name: city
+      label: Ville (dans cette langue)
+      type: string
+      description: Ex. Vienne / Wien / Vienna, affichée dans l’adresse de l’Impressum.
+    - name: title
+      label: Titre
+      type: string
+  - name: footer
+    label: Pied de page
+    type: object
+    fields:
+    - name: about
+      label: Texte de présentation
+      type: text
+    - name: privacy_label
+      label: Libellé du lien confidentialité
+      type: string
+  operations:
+    delete: false
+settings:
+  content:
+    merge: true

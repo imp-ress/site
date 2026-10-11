@@ -1,0 +1,213 @@
+{
+  "lang": "en",
+  "html_lang": "en",
+  "og_locale": "en_US",
+  "nav_label": "Language switcher",
+  "uid_pending": "to follow",
+  "meta": {
+    "title": "imp-ress — PR, Representation & Tourism Consulting | Vienna",
+    "description": "Vienna-based PR, representation and consulting for tourism and lifestyle destinations and brands in Austria and beyond. Founded by Ilona Perrot."
+  },
+  "hero": {
+    "eyebrow": "Representation & Communication",
+    "name": "Ilona Perrot",
+    "subtitle": "Founder of imp-ress",
+    "bio": [
+      "French-Austrian, a graduate of Sciences Po Strasbourg, with Vienna as my adopted home, I have a resolutely international background: from public institutions (Council of Europe, Styrian Parliament, Austrian Federal Ministry of Social Affairs) to Atout France, the French tourism board, where I spent more than ten years as Press & PR Manager, covering media relations, events and cooperation with industry professionals. From that path I learned to look at every project in its own context and to build bridges between different worlds, cultures and players.",
+      "Founded in September 2026, imp-ress supports destinations and brands that want to gain visibility in Austria and beyond, among media, stakeholders and tourism professionals, in leisure and MICE alike, drawing on in-depth market knowledge, a strong network and a combination of strategic vision and hands-on proximity.",
+      "What drives me: understanding what makes a project unique, finding the right tone and creating the right connections. Clear messages, but also emotions, are part of good communication for me, because they create closeness and recognition.",
+      "For you: a single point of contact from strategy through to the final reporting, personal support – collaborative and solution-oriented – and an offer that adapts to your needs and to realities on the ground."
+    ],
+    "photo_alt": "Ilona Perrot, founder of imp-ress, representation and press relations agency in Vienna"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "What I offer",
+    "intro": "",
+    "intro_note": "Every destination and every brand is different, with its own needs – which is why each proposal is tailor-made.",
+    "items": [
+      {
+        "title": "Communication strategy",
+        "text": "Positioning, target audiences and key messages, content and communication concepts."
+      },
+      {
+        "title": "PR & media relations",
+        "text": "Direct line to media, influencers and key stakeholders: targeted outreach, handling of enquiries, trusted relationships and reporting."
+      },
+      {
+        "title": "Business development",
+        "text": "Representing your brand to tourism professionals (leisure & MICE). Presence at workshops and development of new business opportunities."
+      },
+      {
+        "title": "Events",
+        "text": "Meetings, press conferences, tailored presentations and roadshows, from concept to logistics."
+      },
+      {
+        "title": "Press & B2B trips",
+        "text": "Press trips and fam trips: support with programme design, selection of participants, logistics and on-site assistance."
+      },
+      {
+        "title": "Consulting & analysis",
+        "text": "Market study and concrete recommendations to guide your development and growth decisions."
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "In their words",
+    "quotes": [
+      {
+        "text": "Few people talk about the places and stories they represent as vividly as Ilona. And even fewer have such expertise and knowledge on top of that. Not to mention that Ilona is someone who always serves up a solution along with the problem.",
+        "author": "Axel Halbhuber, Head of Travel — Kurier"
+      },
+      {
+        "text": "From our very first meeting, it was clear to me that Ilona Perrot impresses not only with the highest professionalism, but also with reliability and an exceptional feel for people. Even with short-notice challenges, she knows how to find pragmatic solutions and reconcile the most diverse needs. She combines professional excellence with warmth, humour and genuine passion. A combination that makes the difference.",
+        "author": "Michael Kloiber, Section Head — Kleine Zeitung"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk about your project",
+    "btn_mail": "Send an email",
+    "btn_linkedin": "Connect on LinkedIn"
+  },
+  "impressum": {
+    "title": "Legal notice",
+    "city": "Vienna",
+    "sections": [
+      {
+        "h": "Company",
+        "lines": [
+          "%COMPANY%",
+          "Legal form: registered sole proprietorship (eingetragenes Einzelunternehmen)",
+          "Owner: %OWNER%",
+          "Registered seat: %CITY%",
+          "Commercial register number: %FN%",
+          "Commercial register court: %COURT%",
+          "VAT ID (UID): %UID%",
+          "Business purpose: public relations consulting"
+        ]
+      },
+      {
+        "h": "Address and contact",
+        "lines": [
+          "%STREET%, A-%ZIP% %CITY%",
+          "Phone: %PHONE%",
+          "Email: %EMAIL%"
+        ]
+      },
+      {
+        "h": "Authority and applicable rules",
+        "lines": [
+          "Supervisory / trade authority: %AUTHORITY%",
+          "Chamber membership: member of %CHAMBER%",
+          "Applicable rules: Gewerbeordnung (Austrian Trade Act), available at www.ris.bka.gv.at"
+        ]
+      },
+      {
+        "h": "Disclosure under § 25 Austrian Media Act (Mediengesetz)",
+        "lines": [
+          "Media owner and publisher: %COMPANY%, seat %CITY%",
+          "Business purpose: public relations consulting",
+          "Basic editorial line: information about the services of imp-ress."
+        ]
+      },
+      {
+        "h": "Copyright and image credits",
+        "lines": [
+          "The contents of this website are protected by copyright. Reproduction or use requires prior consent.",
+          "Portrait photo: © Christian Jobst"
+        ]
+      },
+      {
+        "h": "Liability for links",
+        "lines": [
+          "This website contains links to external sites over whose content we have no control. The respective operators are solely responsible for it."
+        ]
+      }
+    ],
+    "meta": "Legal notice of imp-ress PR & Consulting e.U., Vienna: publisher, contact details, VAT ID, commercial register."
+  },
+  "footer": {
+    "about": "Representation, public relations and consulting for tourism and lifestyle brands in the Austrian market and beyond.",
+    "privacy_label": "Privacy",
+    "contact_title": "Contact"
+  },
+  "faq": {
+    "eyebrow": "Questions & answers",
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "What is imp-ress?",
+        "a": "imp-ress PR & Consulting e.U. is an agency for representation, public relations and consulting for tourism and lifestyle brands, founded in Vienna by Ilona Perrot."
+      },
+      {
+        "q": "Who does imp-ress work for?",
+        "a": "imp-ress supports and represents international tourism and lifestyle destinations and brands in Austria and beyond, in dealings with media, decision-makers, tour operators and travel agencies in the leisure and MICE segments."
+      },
+      {
+        "q": "What services does imp-ress offer?",
+        "a": "Communication strategy, PR and media relations, business development, events, press trips and fam trips, and consulting and analysis. Every proposal is tailor-made."
+      },
+      {
+        "q": "Which languages does imp-ress work in?",
+        "a": "German, French and English."
+      },
+      {
+        "q": "Where is imp-ress based?",
+        "a": "In Vienna, Austria. imp-ress supports brands looking to grow in Austria and Germany."
+      },
+      {
+        "q": "How can I get in touch?",
+        "a": "By email at %EMAIL% or by phone on %PHONE%."
+      },
+      {
+        "q": "Who is behind imp-ress?",
+        "a": "imp-ress was founded in September 2026 by Ilona Perrot, who is French-Austrian and based in Vienna. She spent more than ten years at Atout France as Press & PR Manager, after positions at the Council of Europe, the Styrian Parliament and the Austrian Federal Ministry of Social Affairs."
+      },
+      {
+        "q": "How does imp-ress work with its clients?",
+        "a": "Every destination and brand is different, so every proposal is tailor-made. imp-ress offers a single point of contact from strategy through to the final reporting, and personal support designed as a partnership."
+      }
+    ],
+    "meta": "Answers to frequently asked questions about imp-ress: what it does, who it works for, services, languages, location and contact."
+  },
+  "privacy_slug": "privacy",
+  "privacy": {
+    "title": "Privacy Policy",
+    "meta": "Privacy policy of imp-ress PR & Consulting e.U.: data processed, purposes, legal basis, hosting and your rights under the GDPR.",
+    "back": "Back to home",
+    "sections": [
+      {
+        "h": "Controller",
+        "p": "The controller for data processing on this website is imp-ress PR & Consulting e.U., Ilona Perrot, Kärntner Straße 17/8, A-1010 Vienna, email: %EMAIL%."
+      },
+      {
+        "h": "Hosting and server log files",
+        "p": "This website is hosted via GitHub Pages (GitHub, Inc., USA). When you visit it, technical data such as your IP address, date and time and the page requested are processed in order to deliver the site and keep it secure. The legal basis is our legitimate interest in stable and secure operation (Art. 6(1)(f) GDPR)."
+      },
+      {
+        "h": "Cookies and fonts",
+        "p": "This website does not set any cookies. The fonts used are loaded from our own server; no connection to Google Fonts is made."
+      },
+      {
+        "h": "Contact",
+        "p": "If you contact us by email or phone, we process your details to handle your enquiry and any follow-up questions. They are not passed on without your consent."
+      },
+      {
+        "h": "External links",
+        "p": "This website contains links to external sites, such as LinkedIn. The privacy rules of the respective provider apply when you click on them."
+      },
+      {
+        "h": "Your rights",
+        "p": "You have the right of access, rectification, erasure, restriction of processing, data portability and objection. Please contact us at the email address above. You also have the right to lodge a complaint with the Austrian data protection authority (www.dsb.gv.at)."
+      }
+    ],
+    "analytics": {
+      "h": "Audience measurement",
+      "p": "We use Cloudflare Web Analytics (Cloudflare, Inc., USA) for anonymous audience measurement. The service works without cookies and without building personal profiles. The legal basis is our legitimate interest in improving our website (Art. 6(1)(f) GDPR)."
+    }
+  },
+  "legal_slug": "legal-notice"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "imp-ress-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine trilingue imp·ress (FR / DE / EN)",
+  "scripts": {
+    "build": "node build.js && node check.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

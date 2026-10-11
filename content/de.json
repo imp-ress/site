@@ -1,0 +1,213 @@
+{
+  "lang": "de",
+  "html_lang": "de",
+  "og_locale": "de_AT",
+  "nav_label": "Sprachauswahl",
+  "uid_pending": "folgt",
+  "meta": {
+    "title": "imp-ress — PR, Repräsentanz & Beratung für Tourismus | Wien",
+    "description": "Wiener Agentur für PR, Repräsentanz und Beratung: imp-ress begleitet Destinationen sowie Tourismus- und Lifestyle-Marken in Österreich und darüber hinaus."
+  },
+  "hero": {
+    "eyebrow": "Repräsentanz & Kommunikation",
+    "name": "Ilona Perrot",
+    "subtitle": "Gründerin von imp-ress",
+    "bio": [
+      "Als Französin und Österreicherin, Absolventin von Sciences Po Strasbourg und mit Wien als Wahlheimat, blicke ich auf einen konsequent internationalen Werdegang zurück: von öffentlichen Institutionen (Europarat, Landtag Steiermark, Bundesministerium für Soziales) zur französischen Zentrale für Tourismus Atout France, wo ich über zehn Jahre als Pressesprecherin tätig war – zwischen Medienarbeit, Veranstaltungen und Kooperationen mit Branchenprofis. Daraus habe ich gelernt, jedes Projekt in seinem Kontext zu betrachten und Brücken zwischen unterschiedlichen Welten, Kulturen und Akteur:innen zu schlagen.",
+      "imp-ress wurde im September 2026 gegründet und begleitet Destinationen und Marken, die in Österreich und darüber hinaus sichtbarer werden wollen – bei Medien, Stakeholder:innen und Tourismusprofis, im Leisure- wie im MICE-Bereich. Grundlage sind fundierte Marktkenntnis, ein belastbares Netzwerk und die Verbindung aus strategischem Blick und operativer Nähe.",
+      "Was mich antreibt: verstehen, was ein Projekt einzigartig macht, den richtigen Ton treffen und die richtigen Verbindungen schaffen. Klare Botschaften, aber auch Emotionen gehören für mich zu guter Kommunikation, weil sie Nähe und Wiedererkennung schaffen.",
+      "Für Sie bedeutet das: eine einzige Ansprechpartnerin von der Strategie bis zum finalen Reporting, persönliche Betreuung – partnerschaftlich und lösungsorientiert – und ein Angebot, das sich Ihren Bedürfnissen und der Realität vor Ort anpasst."
+    ],
+    "photo_alt": "Ilona Perrot, Gründerin von imp-ress, Agentur für Repräsentanz und Pressearbeit in Wien"
+  },
+  "services": {
+    "eyebrow": "Leistungen",
+    "title": "Was ich anbiete",
+    "intro": "",
+    "intro_note": "Jede Destination und jede Marke ist anders und hat eigene Bedürfnisse – deshalb entsteht jedes Angebot individuell und maßgeschneidert.",
+    "items": [
+      {
+        "title": "Kommunikationsstrategie",
+        "text": "Positionierung, Zielgruppen und Kernbotschaften, Inhalte und Kommunikationskonzepte."
+      },
+      {
+        "title": "PR & Medienarbeit",
+        "text": "Direkter Draht zu Medien, Influencer:innen und Stakeholder:innen: gezielte Ver­breitung, Anfragen­management, vertrauens­volle Beziehungen und Reporting."
+      },
+      {
+        "title": "Business Development",
+        "text": "Vertretung Ihrer Marke bei Tourismusprofis (Leisure & MICE). Präsenz auf Workshops und Aufbau neuer Geschäftsmöglichkeiten."
+      },
+      {
+        "title": "Events",
+        "text": "Treffen, Pressekonferenzen, individuelle Präsentationen und Roadshows, vom Konzept bis zur Logistik."
+      },
+      {
+        "title": "Presse- & B2B-Reisen",
+        "text": "Pressereisen und Famtrips: Unterstützung bei der Programmgestaltung, Auswahl der Teilnehmer:innen, Logistik und Begleitung vor Ort."
+      },
+      {
+        "title": "Beratung & Analyse",
+        "text": "Marktstudie und konkrete Empfehlungen für Ihre Entscheidungen zu Entwicklung und Wachstum."
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Referenzen",
+    "title": "In eigenen Worten",
+    "quotes": [
+      {
+        "text": "Wenige erzählen von den Orten und Geschichten, die sie vertreten, so sprühend wie Ilona. Und noch weniger haben dann auch noch so viel Ahnung und Wissen darüber. Ganz abgesehen davon, dass Ilona eine ist, die Probleme immer mit einer Lösung garniert.",
+        "author": "Axel Halbhuber, Leiter Reise — Kurier"
+      },
+      {
+        "text": "Schon bei unserer ersten Begegnung war mir klar, dass Ilona Perrot nicht nur durch höchste Professionalität überzeugt, sondern auch mit Verlässlichkeit und einem außergewöhnlichen Gespür für Menschen punktet. Sie versteht es, auch bei kurzfristigen Herausforderungen pragmatische Lösungen zu finden und unterschiedlichste Bedürfnisse unter einen Hut zu bringen. Dabei verbindet sie fachliche Exzellenz mit Herzlichkeit, Humor und echter Leidenschaft. Eine Kombination, die den Unterschied macht.",
+        "author": "Michael Kloiber, Ressortleiter — Kleine Zeitung"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Sprechen wir über Ihr Projekt",
+    "btn_mail": "E-Mail schreiben",
+    "btn_linkedin": "Auf LinkedIn"
+  },
+  "impressum": {
+    "title": "Impressum",
+    "city": "Wien",
+    "sections": [
+      {
+        "h": "Unternehmen",
+        "lines": [
+          "%COMPANY%",
+          "Rechtsform: eingetragenes Einzelunternehmen",
+          "Inhaber: %OWNER%",
+          "Sitz: %CITY%",
+          "Firmenbuchnummer: %FN%",
+          "Firmenbuchgericht: %COURT%",
+          "UID-Nummer: %UID%",
+          "Unternehmensgegenstand: Public Relations-Beratung"
+        ]
+      },
+      {
+        "h": "Anschrift und Kontakt",
+        "lines": [
+          "%STREET%, A-%ZIP% %CITY%",
+          "Telefon: %PHONE%",
+          "E-Mail: %EMAIL%"
+        ]
+      },
+      {
+        "h": "Behörde und anwendbare Vorschriften",
+        "lines": [
+          "Aufsichts-/Gewerbebehörde: %AUTHORITY%",
+          "Kammerzugehörigkeit: Mitglied der %CHAMBER%",
+          "Anwendbare Rechtsvorschriften: Gewerbeordnung (abrufbar unter www.ris.bka.gv.at)"
+        ]
+      },
+      {
+        "h": "Offenlegung nach § 25 Mediengesetz",
+        "lines": [
+          "Medieninhaber und Herausgeber: %COMPANY%, Sitz %CITY%",
+          "Unternehmensgegenstand: Public Relations-Beratung",
+          "Grundlegende Richtung: Information über die Leistungen von imp-ress."
+        ]
+      },
+      {
+        "h": "Urheberrecht und Bildnachweis",
+        "lines": [
+          "Die Inhalte dieser Website sind urheberrechtlich geschützt. Eine Vervielfältigung oder Verwendung ist nur mit vorheriger Zustimmung zulässig.",
+          "Porträtfoto: © Christian Jobst"
+        ]
+      },
+      {
+        "h": "Haftung für Links",
+        "lines": [
+          "Diese Website enthält Links zu externen Seiten, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte sind ausschließlich die jeweiligen Anbieter verantwortlich."
+        ]
+      }
+    ],
+    "meta": "Impressum der imp-ress PR & Consulting e.U., Wien: Medieninhaber, Kontakt, UID-Nummer, Firmenbuch."
+  },
+  "footer": {
+    "about": "Repräsentanz, Public Relations und Beratung für Tourismus- und Lifestyle-Marken auf dem österreichischen Markt und darüber hinaus.",
+    "privacy_label": "Datenschutz",
+    "contact_title": "Kontakt"
+  },
+  "faq": {
+    "eyebrow": "Fragen & Antworten",
+    "title": "Häufige Fragen",
+    "items": [
+      {
+        "q": "Was ist imp-ress?",
+        "a": "imp-ress PR & Consulting e.U. ist eine von Ilona Perrot in Wien gegründete Agentur für Repräsentanz, Public Relations und Beratung für Tourismus- und Lifestyle-Marken."
+      },
+      {
+        "q": "Für wen arbeitet imp-ress?",
+        "a": "imp-ress betreut und vertritt internationale Destinationen und Marken aus Tourismus und Lifestyle in Österreich und darüber hinaus gegenüber Medien, Entscheidungsträgern, Reiseveranstaltern und Reisebüros im Leisure- und MICE-Segment."
+      },
+      {
+        "q": "Welche Leistungen bietet imp-ress an?",
+        "a": "Kommunikationsstrategie, PR und Medienarbeit, Business Development, Events, Pressereisen und Famtrips sowie Beratung und Analyse. Jedes Angebot entsteht individuell und maßgeschneidert."
+      },
+      {
+        "q": "In welchen Sprachen ist die Zusammenarbeit möglich?",
+        "a": "Auf Deutsch, Französisch und Englisch."
+      },
+      {
+        "q": "Wo sitzt imp-ress?",
+        "a": "In Wien, Österreich. imp-ress begleitet Marken, die in Österreich und Deutschland wachsen möchten."
+      },
+      {
+        "q": "Wie nehme ich Kontakt auf?",
+        "a": "Per E-Mail an %EMAIL% oder telefonisch unter %PHONE%."
+      },
+      {
+        "q": "Wer steht hinter imp-ress?",
+        "a": "imp-ress wurde im September 2026 von Ilona Perrot gegründet, einer Französin und Österreicherin mit Wien als Wahlheimat. Sie war über zehn Jahre als Pressesprecherin bei Atout France tätig, zuvor beim Europarat, im Landtag Steiermark und im Bundesministerium für Soziales."
+      },
+      {
+        "q": "Wie arbeitet imp-ress mit Kund:innen zusammen?",
+        "a": "Jede Destination und jede Marke ist anders, daher entsteht jedes Angebot individuell und maßgeschneidert. imp-ress bietet eine einzige Ansprechpartnerin von der Strategie bis zum finalen Reporting und persönliche Betreuung im Sinne einer Partnerschaft."
+      }
+    ],
+    "meta": "Antworten auf häufige Fragen zu imp-ress: Tätigkeit, Zielgruppe, Leistungen, Arbeitssprachen, Standort und Kontakt."
+  },
+  "privacy_slug": "datenschutz",
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "meta": "Datenschutzerklärung der imp-ress PR & Consulting e.U.: verarbeitete Daten, Zwecke, Rechtsgrundlagen, Hosting und Ihre Rechte nach DSGVO.",
+    "back": "Zurück zur Startseite",
+    "sections": [
+      {
+        "h": "Verantwortliche",
+        "p": "Verantwortlich für die Datenverarbeitung auf dieser Website ist imp-ress PR & Consulting e.U., Ilona Perrot, Kärntner Straße 17/8, A-1010 Wien, E-Mail: %EMAIL%."
+      },
+      {
+        "h": "Hosting und Server-Logfiles",
+        "p": "Diese Website wird über GitHub Pages (GitHub, Inc., USA) bereitgestellt. Beim Aufruf werden technisch bedingt Daten wie die IP-Adresse, Datum und Uhrzeit sowie die aufgerufene Seite verarbeitet, um die Website auszuliefern und sicher zu betreiben. Rechtsgrundlage ist unser berechtigtes Interesse an einem stabilen und sicheren Betrieb (Art. 6 Abs. 1 lit. f DSGVO)."
+      },
+      {
+        "h": "Cookies und Schriftarten",
+        "p": "Diese Website setzt keine Cookies. Die verwendeten Schriftarten werden von unserem eigenen Server geladen, es findet keine Verbindung zu Google Fonts statt."
+      },
+      {
+        "h": "Kontaktaufnahme",
+        "p": "Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung Ihrer Anfrage und für den Fall von Anschlussfragen. Die Daten werden nicht ohne Ihre Einwilligung weitergegeben."
+      },
+      {
+        "h": "Externe Links",
+        "p": "Diese Website enthält Links zu externen Seiten, etwa zu LinkedIn. Beim Anklicken gelten die Datenschutzbestimmungen des jeweiligen Anbieters."
+      },
+      {
+        "h": "Ihre Rechte",
+        "p": "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Wenden Sie sich dazu an die oben genannte E-Mail-Adresse. Sie haben außerdem das Recht, sich bei der österreichischen Datenschutzbehörde (www.dsb.gv.at) zu beschweren."
+      }
+    ],
+    "analytics": {
+      "h": "Reichweitenmessung",
+      "p": "Zur anonymen Reichweitenmessung nutzen wir Cloudflare Web Analytics (Cloudflare, Inc., USA). Der Dienst arbeitet ohne Cookies und ohne Speicherung personenbezogener Profile. Rechtsgrundlage ist unser berechtigtes Interesse an der Optimierung unseres Webangebots (Art. 6 Abs. 1 lit. f DSGVO)."
+    }
+  },
+  "legal_slug": "impressum"
+}

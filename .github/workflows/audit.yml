@@ -1,0 +1,58 @@
+# Contrôle qualité automatique : une fois par semaine et à la demande.
+# Silencieux quand tout va bien. En cas de problème, le déroulement passe au rouge
+# et GitHub envoie un e-mail d'alerte au propriétaire du dépôt.
+name: Contrôle hebdomadaire
+
+on:
+  schedule:
+    - cron: "17 5 * * 1"   # chaque lundi vers 7 h (heure de Vienne)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualite:
+    name: Cohérence FR/DE/EN et Lighthouse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Générer et vérifier le site (cohérence, SEO, trois langues)
+        run: node build.js && node check.js
+      - name: Lighthouse (performance, accessibilité, bonnes pratiques, SEO)
+        run: npx --yes @lhci/cli@0.14.x autorun
+
+  en-ligne:
+    name: Site en ligne et liens
+    # Ne s'exécute qu'après la mise en ligne : Settings > Secrets and variables > Actions > Variables,
+    # créer SITE_LIVE = true.
+    if: ${{ vars.SITE_LIVE == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Les 12 pages répondent (code 200)
+        run: |
+          set -e
+          base="https://www.imp-ress.com"
+          fail=0
+          for p in fr/ fr/faq/ fr/mentions-legales/ fr/confidentialite/ \
+                   de/ de/faq/ de/impressum/ de/datenschutz/ \
+                   en/ en/faq/ en/legal-notice/ en/privacy/ \
+                   sitemap.xml robots.txt llms.txt; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" -L "$base/$p")
+            echo "$code  $base/$p"
+            [ "$code" = "200" ] || fail=1
+          done
+          exit $fail
+      - name: "Liens cassés (LinkedIn exclu, il bloque les robots)"
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-retries 2 --timeout 20
+            --exclude 'linkedin\.com'
+            https://www.imp-ress.com/fr/ https://www.imp-ress.com/de/ https://www.imp-ress.com/en/
+            https://www.imp-ress.com/fr/faq/ https://www.imp-ress.com/de/faq/ https://www.imp-ress.com/en/faq/
+          fail: true
