@@ -83,7 +83,7 @@ for (const [k, h] of Object.entries(pages)) {
   if (k.endsWith("/faq") && !h.includes('"FAQPage"')) err(`${k} : FAQPage absent`);
   if (k.endsWith("/") && !k.endsWith("faq/") && !(h.includes('"hasOfferCatalog"') && h.includes('"WebSite"'))) err(`${k} : JSON-LD (offres / WebSite) incomplet`);
 }
-for (const f of ["assets/uploads/og-imp-ress.png", "assets/uploads/imp-ress-logo.png", "assets/favicon.ico", "assets/apple-touch-icon.png", "assets/site.webmanifest", "404.html", "robots.txt"])
+for (const f of ["assets/uploads/og-imp-ress-pr-consulting.png", "assets/uploads/imp-ress-logo.png", "assets/favicon.ico", "assets/apple-touch-icon.png", "assets/site.webmanifest", "404.html", "robots.txt"])
   if (!fs.existsSync(path.join(DIST, f))) err(`fichier manquant : ${f}`);
 const robots = fs.readFileSync(path.join(DIST, "robots.txt"), "utf-8");
 if (!/Sitemap:/.test(robots) || /Disallow:\s*\//.test(robots)) err("robots.txt : plan du site absent ou site bloqué");

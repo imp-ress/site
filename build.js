@@ -48,7 +48,7 @@ function buildPage(lang, c, s) {
   const prefix = "../"; // les pages vivent dans /fr/, /de/, /en/
   const site = s.site_url.replace(/\/+$/, "");
   const canonical = `${site}/${lang}/`;
-  const ogImageAbs = `${site}/assets/uploads/og-imp-ress.png`;
+  const ogImageAbs = `${site}/assets/uploads/og-imp-ress-pr-consulting.png`;
   const photoAbs = site + (String(s.photo).startsWith("/") ? s.photo : "/" + s.photo);
 
   const impressumAddress = `${s.street}, ${s.postal_code} ${s.city}, ${s.country}`;
@@ -230,7 +230,7 @@ ${hreflangs}
 <meta property="og:image" content="${ogImageAbs}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="imp-ress — ${esc(s.city)}">
+<meta property="og:image:alt" content="imp-ress — Public Relations | Consulting">
 <meta property="og:url" content="${canonical}">
 <meta property="og:locale" content="${esc(c.og_locale)}">
 ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternate" content="${esc(readJSON(l).og_locale)}">`).join("\n")}
@@ -706,13 +706,13 @@ function polish(html, s, lang) {
       `<meta property="og:description" content="${desc}">`,
       `<meta property="og:url" content="${canon}">`,
       `<meta property="og:locale" content="${loc}">`,
-      `<meta property="og:image" content="${site}/assets/uploads/og-imp-ress.png">`,
+      `<meta property="og:image" content="${site}/assets/uploads/og-imp-ress-pr-consulting.png">`,
       `<meta property="og:image:width" content="1200">`,
       `<meta property="og:image:height" content="630">`,
       `<meta name="twitter:card" content="summary_large_image">`,
       `<meta name="twitter:title" content="${title}">`,
       `<meta name="twitter:description" content="${desc}">`,
-      `<meta name="twitter:image" content="${site}/assets/uploads/og-imp-ress.png">`
+      `<meta name="twitter:image" content="${site}/assets/uploads/og-imp-ress-pr-consulting.png">`
     );
   }
   if (!/application\/ld\+json/.test(html) && lang) {
