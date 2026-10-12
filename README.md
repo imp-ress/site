@@ -84,7 +84,7 @@ Le classeur `imp-ress-suivi-marketing.xlsx` sert de tableau de bord mensuel : in
 
 ## SEO / GEO — ce qui est en place
 
-- Titres et descriptions uniques par page et par langue (≤ 65 / ≤ 160 caractères), canonical, hreflang (fr/de/en + x-default), Open Graph et Twitter Cards avec image de partage 1200×630 (`static/assets/uploads/og-imp-ress.png`).
+- Titres et descriptions uniques par page et par langue (≤ 65 / ≤ 160 caractères), canonical, hreflang (fr/de/en + x-default), Open Graph et Twitter Cards avec image de partage 1200×630 (`static/assets/uploads/og-imp-ress-pr-consulting.png`).
 - Données structurées JSON-LD : ProfessionalService (+ catalogue d'offres), Person, WebSite, WebPage ; FAQPage sur les pages FAQ ; BreadcrumbList sur les pages légales.
 - `sitemap.xml` avec hreflang, `robots.txt` (accès explicitement autorisé aux robots IA : GPTBot, ClaudeBot, PerplexityBot…), `llms.txt` (fiche de synthèse pour assistants IA : faits clés, présentation, prestations, FAQ, contact).
 - Favicons, apple-touch-icon, `site.webmanifest`, page `404.html`.
