@@ -590,14 +590,14 @@ function uidLabel(lang) {
   return lang === "en" ? "VAT ID" : "UID";
 }
 
-// ---------- page racine (redirection vers /fr/) ----------
+// ---------- page racine (redirection selon la langue du navigateur) ----------
 function buildRoot(s) {
   const site = s.site_url.replace(/\/+$/, "");
   return `<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=fr/">
+<noscript><meta http-equiv="refresh" content="0; url=fr/"></noscript>
 <title>imp-ress — Ilona Perrot</title>
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="${site}/fr/">
@@ -607,7 +607,23 @@ ${LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${site}/${l}/">`
 </head>
 <body>
 <p>imp-ress — <a href="fr/">Français</a> · <a href="de/">Deutsch</a> · <a href="en/">English</a></p>
-<script>window.location.replace("fr/");</script>
+<script>
+// Sprachweiche : 1) zuletzt manuell gewählte Sprache, 2) Browsersprache (de → DE, fr → FR), 3) sonst EN.
+// Suchmaschinen erhalten immer die französische Standardversion (x-default).
+(function () {
+  var supported = ["fr", "de", "en"], target = "";
+  try { var saved = localStorage.getItem("imp-lang"); if (supported.indexOf(saved) > -1) target = saved; } catch (e) {}
+  if (!target && /bot|crawl|spider|slurp|lighthouse|preview/i.test(navigator.userAgent || "")) target = "fr";
+  if (!target) {
+    var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+    for (var i = 0; i < langs.length && !target; i++) {
+      var code = String(langs[i]).toLowerCase().slice(0, 2);
+      if (supported.indexOf(code) > -1) target = code;
+    }
+  }
+  window.location.replace((target || "en") + "/" + window.location.search + window.location.hash);
+})();
+</script>
 </body>
 </html>
 `;
@@ -733,6 +749,8 @@ function polish(html, s, lang) {
     head.push(`<script type="application/ld+json">\n${JSON.stringify(ld, null, 2).replace(/</g, "\\u003c")}\n</script>`);
   }
   head.push(`<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>`);
+  // mémorise la langue choisie via le sélecteur (utilisée par la page racine)
+  if (lang) html = html.replace("</body>", `<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-btn[hreflang]");if(a){try{localStorage.setItem("imp-lang",a.getAttribute("hreflang"))}catch(x){}}});</script>\n</body>`);
   html = html.replace("</head>", head.join("\n") + "\n</head>");
   html = html.replace("<main>", '<main id="main">');
   if (lang) {
