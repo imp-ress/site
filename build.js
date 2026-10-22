@@ -845,3 +845,35 @@ fs.writeFileSync(
 fs.writeFileSync(path.join(DIST, "404.html"), build404(settings));
 
 console.log("Site généré dans dist/ (fr, de, en).");
+
+// ---------- sécurité : politique de contenu (CSP) et referrer sur toutes les pages ----------
+// Le navigateur n'exécute que les scripts du site, ceux dont l'empreinte (hash) est connue,
+// et la balise statistique Cloudflare. Toute injection de code étranger est bloquée.
+{
+  const crypto = require("crypto");
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".html") ? [path.join(d, e.name)] : []);
+  for (const f of walk(DIST)) {
+    let html = fs.readFileSync(f, "utf-8");
+    const hashes = [...html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)]
+      .map((m) => `'sha256-${crypto.createHash("sha256").update(m[1], "utf8").digest("base64")}'`);
+    const csp = [
+      "default-src 'self'",
+      `script-src 'self' ${hashes.join(" ")} https://static.cloudflareinsights.com`.replace(/\s+/g, " "),
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data:",
+      "font-src 'self'",
+      "connect-src 'self' https://cloudflareinsights.com",
+      "manifest-src 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'none'",
+      "upgrade-insecure-requests",
+    ].join("; ");
+    html = html.replace(
+      '<meta charset="UTF-8">',
+      `<meta charset="UTF-8">\n<meta http-equiv="Content-Security-Policy" content="${csp}">\n<meta name="referrer" content="strict-origin-when-cross-origin">`
+    );
+    fs.writeFileSync(f, html);
+  }
+}

@@ -16,14 +16,14 @@ jobs:
     name: Cohérence FR/DE/EN et Lighthouse
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
       - name: Générer et vérifier le site (cohérence, SEO, trois langues)
         run: node build.js && node check.js
       - name: Lighthouse (performance, accessibilité, bonnes pratiques, SEO)
-        run: npx --yes @lhci/cli@0.14.x autorun
+        run: npx --yes @lhci/cli@0.14.0 autorun
 
   en-ligne:
     name: Site en ligne et liens
@@ -32,7 +32,7 @@ jobs:
     if: ${{ vars.SITE_LIVE == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Les 12 pages répondent (code 200)
         run: |
           set -e
@@ -48,7 +48,7 @@ jobs:
           done
           exit $fail
       - name: "Liens cassés (LinkedIn exclu, il bloque les robots)"
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         with:
           args: >-
             --no-progress --max-retries 2 --timeout 20

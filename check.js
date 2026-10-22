@@ -13,6 +13,21 @@ const shape = (v, p = "") =>
 const ref = shape(c.fr).join("|");
 for (const l of ["de", "en"]) if (shape(c[l]).join("|") !== ref) err(`Structure de content/${l}.json différente de fr.json`);
 
+// 1b) sécurité : liens sûrs dans les réglages, protection CSP présente partout
+if (s.linkedin && !/^https:\/\/([a-z]+\.)?linkedin\.com\//.test(s.linkedin)) err("Réglages : le lien LinkedIn doit commencer par https://www.linkedin.com/");
+if (!/^https:\/\//.test(s.site_url || "")) err("Réglages : l'adresse du site doit commencer par https://");
+if (s.email && !/^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(s.email)) err("Réglages : adresse e-mail invalide");
+{
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".html") ? [path.join(d, e.name)] : []);
+  for (const f of walk(DIST)) {
+    const h = fs.readFileSync(f, "utf-8"), k = path.relative(DIST, f);
+    if (!/http-equiv="Content-Security-Policy"/.test(h)) err(`${k} : protection CSP absente`);
+    if (/href="\s*javascript:/i.test(h)) err(`${k} : lien javascript: interdit`);
+    if (/<(script|link|img)[^>]+(src|href)="http:\/\//i.test(h)) err(`${k} : ressource non sécurisée (http://)`);
+  }
+}
+
 // 2) aucun champ vide ou jeton non remplacé dans les pages générées
 const slugs = (l) => ["", "faq", c[l].legal_slug, c[l].privacy_slug];
 const pages = {};
