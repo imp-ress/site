@@ -83,6 +83,111 @@ content:
       activées et la page de confidentialité le mentionne.
   operations:
     delete: false
+- name: press
+  label: Presse (articles parus)
+  type: file
+  path: content/press.json
+  format: json
+  description: Uniquement des informations publiques (média, titre, date, lien). Ne jamais copier ici le tableau interne des retombées.
+  fields:
+  - name: about
+    label: Articles sur imp-ress / Ilona Perrot
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{media} — {date}'
+    fields:
+    - name: media
+      label: Média
+      type: string
+      description: Nom du média tel qu'il s'écrit (ex. HORIZONT, medianet, Kurier).
+    - name: kind
+      label: Type
+      type: select
+      options:
+        values:
+        - value: news
+          label: Article / brève
+        - value: interview
+          label: Interview
+        - value: portrait
+          label: Portrait
+    - name: date
+      label: Date de parution
+      type: string
+      description: 'Format AAAA-MM-JJ (ex. 2026-10-14). Laisser vide si inconnue.'
+    - name: title
+      label: Titre de l'article (tel que publié)
+      type: string
+    - name: title_lang
+      label: Langue du titre (de, fr ou en)
+      type: string
+    - name: url
+      label: Lien vers l'article
+      type: string
+      description: Doit commencer par https://
+    - name: title_en
+      label: Titre en anglais (optionnel)
+      type: string
+      description: Seulement si le média a publié une version anglaise.
+    - name: url_en
+      label: Lien version anglaise (optionnel)
+      type: string
+    - name: featured
+      label: Mettre en avant (grande vignette)
+      type: boolean
+  - name: clients
+    label: Medienecho pour nos clients
+    type: object
+    description: La rubrique n'apparaît sur le site qu'à partir du premier article saisi ici. Demander l'accord du client avant publication.
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{client} — {media}'
+    fields:
+    - name: client
+      label: Client
+      type: string
+    - name: media
+      label: Média
+      type: string
+      description: Nom du média tel qu'il s'écrit (ex. HORIZONT, medianet, Kurier).
+    - name: kind
+      label: Type
+      type: select
+      options:
+        values:
+        - value: news
+          label: Article / brève
+        - value: interview
+          label: Interview
+        - value: portrait
+          label: Portrait
+    - name: date
+      label: Date de parution
+      type: string
+      description: 'Format AAAA-MM-JJ (ex. 2026-10-14). Laisser vide si inconnue.'
+    - name: title
+      label: Titre de l'article (tel que publié)
+      type: string
+    - name: title_lang
+      label: Langue du titre (de, fr ou en)
+      type: string
+    - name: url
+      label: Lien vers l'article
+      type: string
+      description: Doit commencer par https://
+    - name: title_en
+      label: Titre en anglais (optionnel)
+      type: string
+      description: Seulement si le média a publié une version anglaise.
+    - name: url_en
+      label: Lien version anglaise (optionnel)
+      type: string
+    - name: featured
+      label: Mettre en avant (grande vignette)
+      type: boolean
 - name: fr
   label: Textes — Français
   type: file

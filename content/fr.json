@@ -213,5 +213,22 @@
       "p": "Pour mesurer l'audience de façon anonyme, nous utilisons Cloudflare Web Analytics (Cloudflare, Inc., États-Unis). Ce service fonctionne sans cookie et sans création de profil personnel. La base légale est notre intérêt légitime à améliorer notre offre en ligne (art. 6, par. 1, point f du RGPD)."
     }
   },
-  "legal_slug": "mentions-legales"
+  "legal_slug": "mentions-legales",
+  "press": {
+    "slug": "presse",
+    "eyebrow": "Presse",
+    "title": "La presse en parle",
+    "meta": "La presse parle d'imp-ress PR & Consulting : interviews et articles sur l'agence viennoise d'Ilona Perrot, notamment dans HORIZONT, medianet et PR Report.",
+    "intro": "Articles, interviews et brèves consacrés à imp-ress et à la création de l'agence à Vienne.",
+    "lang_note": "Articles en allemand, sauf mention contraire.",
+    "tab_about": "À propos d'imp-ress",
+    "tab_clients": "Retombées presse pour nos clients",
+    "home_link": "Voir ce qu'en dit la presse",
+    "new_tab": "s'ouvre dans un nouvel onglet",
+    "kinds": {
+      "interview": "Interview",
+      "news": "Article",
+      "portrait": "Portrait"
+    }
+  }
 }

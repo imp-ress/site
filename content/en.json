@@ -213,5 +213,22 @@
       "p": "We use Cloudflare Web Analytics (Cloudflare, Inc., USA) for anonymous audience measurement. The service works without cookies and without building personal profiles. The legal basis is our legitimate interest in improving our website (Art. 6(1)(f) GDPR)."
     }
   },
-  "legal_slug": "legal-notice"
+  "legal_slug": "legal-notice",
+  "press": {
+    "slug": "press",
+    "eyebrow": "Press",
+    "title": "In the press",
+    "meta": "imp-ress PR & Consulting in the press: interviews and articles about Ilona Perrot's Vienna agency, including HORIZONT, medianet and PR Report.",
+    "intro": "Articles, interviews and news items about imp-ress and the launch of the agency in Vienna.",
+    "lang_note": "Articles in German unless stated otherwise.",
+    "tab_about": "About imp-ress",
+    "tab_clients": "Media coverage for our clients",
+    "home_link": "Read press coverage",
+    "new_tab": "opens in a new tab",
+    "kinds": {
+      "interview": "Interview",
+      "news": "News",
+      "portrait": "Profile"
+    }
+  }
 }

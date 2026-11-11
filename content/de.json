@@ -213,5 +213,22 @@
       "p": "Zur anonymen Reichweitenmessung nutzen wir Cloudflare Web Analytics (Cloudflare, Inc., USA). Der Dienst arbeitet ohne Cookies und ohne Speicherung personenbezogener Profile. Rechtsgrundlage ist unser berechtigtes Interesse an der Optimierung unseres Webangebots (Art. 6 Abs. 1 lit. f DSGVO)."
     }
   },
-  "legal_slug": "impressum"
+  "legal_slug": "impressum",
+  "press": {
+    "slug": "presse",
+    "eyebrow": "Presse",
+    "title": "Pressestimmen",
+    "meta": "Pressestimmen zu imp-ress PR & Consulting: Interviews und Artikel über die Wiener Agentur von Ilona Perrot, u. a. in HORIZONT, medianet und PR Report.",
+    "intro": "Artikel, Interviews und Meldungen über imp-ress und die Gründung der Agentur in Wien.",
+    "lang_note": "",
+    "tab_about": "Über imp-ress",
+    "tab_clients": "Medienecho für unsere Kund:innen",
+    "home_link": "Pressestimmen lesen",
+    "new_tab": "öffnet in neuem Tab",
+    "kinds": {
+      "interview": "Interview",
+      "news": "Meldung",
+      "portrait": "Porträt"
+    }
+  }
 }

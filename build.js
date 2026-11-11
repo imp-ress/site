@@ -174,6 +174,7 @@ ${quotes
   )
   .join("\n\n")}
   </div>
+  ${filled(c.press && c.press.home_link) ? `<p class="press-teaser reveal"><a href="${c.press.slug}/">${esc(c.press.home_link)} <span aria-hidden="true">&rarr;</span></a></p>` : ""}
 </section>
 `
     : "";
@@ -328,7 +329,7 @@ ${testimonialsSection}<section class="contact" id="contact">
     </div>
   </div>
   <div class="footer-bottom">
-    &copy; ${year} ${esc(filled(s.company_name) ? s.company_name : "imp-ress")} &mdash; ${esc(host)} &middot; <a href="faq/">FAQ</a> &middot; <a href="${c.legal_slug}/">${esc(c.impressum.title)}</a> &middot; <a href="${privacyHref}">${esc(c.footer.privacy_label)}</a>
+    &copy; ${year} ${esc(filled(s.company_name) ? s.company_name : "imp-ress")} &mdash; ${esc(host)} &middot; <a href="${c.press.slug}/">${esc(c.press.title)}</a> &middot; <a href="faq/">FAQ</a> &middot; <a href="${c.legal_slug}/">${esc(c.impressum.title)}</a> &middot; <a href="${privacyHref}">${esc(c.footer.privacy_label)}</a>
   </div>
 </footer>
 
@@ -462,6 +463,109 @@ ${filled(s.analytics_token) ? `<script defer src="https://static.cloudflareinsig
 `;
 }
 
+// ---------- page presse (« La presse en parle » / « Pressestimmen » / « In the press ») ----------
+// Les articles viennent de content/press.json (seulement des informations publiques :
+// média, titre, date, lien). Le tableau interne des retombées n'est jamais publié.
+const readPress = () => {
+  const f = path.join(ROOT, "content", "press.json");
+  if (!fs.existsSync(f)) return { about: [], clients: [] };
+  const p = readJSON("press");
+  const ok = (a) => filled(a.media) && filled(a.title) && /^https:\/\//.test(a.url || "");
+  const sort = (arr) =>
+    list(arr).filter(ok).sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || String(b.date || "").localeCompare(String(a.date || "")));
+  return { about: sort(p.about), clients: sort(p.clients) };
+};
+
+const fmtDate = (d, lang) => {
+  if (!/^\d{4}-\d{2}(-\d{2})?$/.test(d || "")) return "";
+  const [y, m, day] = d.split("-").map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, day || 1));
+  const loc = { fr: "fr-FR", de: "de-AT", en: "en-GB" }[lang];
+  return new Intl.DateTimeFormat(loc, day ? { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" } : { month: "long", year: "numeric", timeZone: "UTC" }).format(dt);
+};
+
+function pressCard(a, lang, c, isClient) {
+  const en = lang === "en" && filled(a.url_en);
+  const url = en ? a.url_en : a.url;
+  const title = en && filled(a.title_en) ? a.title_en : a.title;
+  const tLang = en ? "en" : a.title_lang || "de";
+  const kind = (c.press.kinds && c.press.kinds[a.kind]) || "";
+  const meta = [kind, fmtDate(a.date, lang)].filter(filled).join(" · ");
+  return `      <a class="press-card${a.featured ? " featured" : ""}" href="${esc(url)}" target="_blank" rel="noopener">
+        ${meta ? `<span class="press-meta">${esc(meta)}</span>` : ""}
+        <span class="press-media">${esc(a.media)}</span>
+        ${isClient && filled(a.client) ? `<span class="press-client">${esc(a.client)}</span>` : ""}
+        <span class="press-title"${tLang !== c.html_lang ? ` lang="${esc(tLang)}"` : ""}>${esc(title).replace(/(imp)-(ress)/gi, "$1&#8209;$2")}</span>
+        <span class="press-arrow" aria-hidden="true">&#8599;</span><span class="sr-only"> (${esc(c.press.new_tab)})</span>
+      </a>`;
+}
+
+function buildPress(lang, c, s) {
+  const prefix = "../../";
+  const site = s.site_url.replace(/\/+$/, "");
+  const slugOf = (l) => readJSON(l).press.slug;
+  const canonical = `${site}/${lang}/${c.press.slug}/`;
+  const hreflangs =
+    LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${site}/${l}/${slugOf(l)}/">`).join("\n") +
+    `\n<link rel="alternate" hreflang="x-default" href="${site}/fr/${slugOf("fr")}/">`;
+  const langSwitch = LANGS.map((l) => {
+    const active = l === lang;
+    return `<a class="lang-btn${active ? " active" : ""}" href="${active ? "./" : "../../" + l + "/" + slugOf(l) + "/"}" hreflang="${l}" lang="${l}" aria-label="${l.toUpperCase()} – ${LANG_NAMES[l]}"${active ? ' aria-current="page"' : ""}>${l.toUpperCase()}</a>`;
+  }).join("\n    ");
+  const press = readPress();
+  const hasClients = press.clients.length > 0;
+  const tabs = hasClients
+    ? `    <nav class="press-tabs" aria-label="${esc(c.press.title)}">
+      <a href="#about">${esc(c.press.tab_about)}</a>
+      <a href="#clients">${esc(c.press.tab_clients)}</a>
+    </nav>\n`
+    : "";
+  const group = (id, heading, items, isClient) => `    <div class="press-group" id="${id}">
+      <h2>${esc(heading)}</h2>
+      <div class="press-grid">
+${items.map((a) => pressCard(a, lang, c, isClient)).join("\n")}
+      </div>
+    </div>`;
+  return `<!DOCTYPE html>
+<html lang="${esc(c.html_lang)}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(c.press.title)} — imp-ress</title>
+<meta name="description" content="${esc(c.press.meta)}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="${canonical}">
+<meta name="theme-color" content="#0B1655">
+${hreflangs}
+<link rel="preload" href="${prefix}assets/fonts/cormorant-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="${prefix}assets/style.css">
+</head>
+<body>
+<header>
+  <a class="wordmark" href="${prefix}${lang}/">imp<span class="wm-dot">&middot;</span>ress</a>
+  <nav class="lang-switch" aria-label="${esc(c.nav_label)}">
+    ${langSwitch}
+  </nav>
+</header>
+<main>
+  <section class="legal press-page">
+    <p class="eyebrow">${esc(c.press.eyebrow)}</p>
+    <h1>${esc(c.press.title)}</h1>
+    <p class="press-intro">${esc(c.press.intro)}${filled(c.press.lang_note) ? ` <span class="press-note">${esc(c.press.lang_note)}</span>` : ""}</p>
+${tabs}${group("about", c.press.tab_about, press.about, false)}
+${hasClients ? group("clients", c.press.tab_clients, press.clients, true) + "\n" : ""}    <p class="legal-back"><a href="${prefix}${lang}/">&larr; ${esc(c.privacy.back)}</a></p>
+  </section>
+</main>
+<footer>
+  <div class="footer-bottom">
+    &copy; ${new Date().getFullYear()} ${esc(filled(s.company_name) ? s.company_name : "imp-ress")} &mdash; ${esc(site.replace(/^https?:\/\//, ""))}
+  </div>
+</footer>
+${filled(s.analytics_token) ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${esc(s.analytics_token)}"}'></script>\n` : ""}</body>
+</html>
+`;
+}
+
 // ---------- page mentions légales / Impressum ----------
 function buildLegal(lang, c, s) {
   const prefix = "../../";
@@ -568,6 +672,7 @@ ${about}
 ## Pages
 ${LANGS.map((l) => `- [${LANG_NAMES[l]}](${site}/${l}/)`).join("\n")}
 - [FAQ](${site}/en/faq/)
+- [In the press](${site}/en/${en.press.slug}/)
 - [Legal notice / Impressum](${site}/en/${en.legal_slug}/)
 - [Privacy / Datenschutz / Confidentialité](${site}/en/${en.privacy_slug}/)
 
@@ -575,6 +680,10 @@ ${LANGS.map((l) => `- [${LANG_NAMES[l]}](${site}/${l}/)`).join("\n")}
 ${svcIntro}
 
 ${svc}
+
+## In the press
+${readPress().about.map((a) => `- ${a.media}${filled(a.date) ? ` (${a.date})` : ""}: "${a.url_en ? a.title_en : a.title}" ${a.url_en || a.url}`).join("\n")}
+- Overview page: ${site}/en/${en.press.slug}/
 
 ## Frequently asked questions
 ${faq}
@@ -673,6 +782,19 @@ ${palt}
 ${lalt}
   </url>`
   ).join("\n\n");
+  const rslug = (l) => readJSON(l).press.slug;
+  const ralt =
+    LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${site}/${l}/${rslug(l)}/"/>`).join("\n") +
+    `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${site}/fr/${rslug("fr")}/"/>`;
+  const rurls = LANGS.map(
+    (l) => `  <url>
+    <loc>${site}/${l}/${rslug(l)}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+${ralt}
+  </url>`
+  ).join("\n\n");
   const furls = LANGS.map(
     (l) => `  <url>
     <loc>${site}/${l}/faq/</loc>
@@ -689,6 +811,8 @@ ${falt}
 ${urls}
 
 ${furls}
+
+${rurls}
 
 ${lurls}
 
@@ -808,6 +932,8 @@ for (const lang of LANGS) {
   fs.writeFileSync(path.join(DIST, lang, content.legal_slug, "index.html"), polish(buildLegal(lang, content, settings), settings, lang));
   fs.mkdirSync(path.join(DIST, lang, "faq"), { recursive: true });
   fs.writeFileSync(path.join(DIST, lang, "faq", "index.html"), polish(buildFaq(lang, content, settings), settings, lang));
+  fs.mkdirSync(path.join(DIST, lang, content.press.slug), { recursive: true });
+  fs.writeFileSync(path.join(DIST, lang, content.press.slug, "index.html"), polish(buildPress(lang, content, settings), settings, lang));
   fs.mkdirSync(path.join(DIST, lang, content.privacy_slug), { recursive: true });
   fs.writeFileSync(path.join(DIST, lang, content.privacy_slug, "index.html"), polish(buildPrivacy(lang, content, settings), settings, lang));
 }

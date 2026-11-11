@@ -29,7 +29,7 @@ if (s.email && !/^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(s.email)) err("Rég
 }
 
 // 2) aucun champ vide ou jeton non remplacé dans les pages générées
-const slugs = (l) => ["", "faq", c[l].legal_slug, c[l].privacy_slug];
+const slugs = (l) => ["", "faq", c[l].press.slug, c[l].legal_slug, c[l].privacy_slug];
 const pages = {};
 for (const l of LANGS) for (const sl of slugs(l)) {
   const f = path.join(DIST, l, sl, "index.html");
@@ -39,7 +39,7 @@ for (const l of LANGS) for (const sl of slugs(l)) {
 const text = (h) => h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"');
 for (const [k, h] of Object.entries(pages)) {
   if (/%[A-Z]+%/.test(h)) err(`${k} : jeton non remplacé`);
-  if (/Imp-ress|\bundefined\b|\[object/.test(text(h))) err(`${k} : « Imp-ress » en majuscule, ou valeur indéfinie`);
+  if (/Imp-ress|\bundefined\b|\[object/.test(text(h.replace(/<span class="press-title"[^>]*>[\s\S]*?<\/span>/g, "")))) err(`${k} : « Imp-ress » en majuscule, ou valeur indéfinie`);
   if (/Wolfgang|1120/.test(h)) err(`${k} : adresse privée détectée`);
   if (/Österreich|Autriche|Austria/.test(text(h).match(/Kärntner[^\n]{0,40}/)?.[0] || "")) err(`${k} : pays dans l'adresse`);
   // liens internes
@@ -47,6 +47,15 @@ for (const [k, h] of Object.entries(pages)) {
     const t = path.join(DIST, k, m[1]);
     if (!fs.existsSync(t) && !fs.existsSync(path.join(t, "index.html"))) err(`${k} : lien cassé ${m[1]}`);
   }
+}
+// 2b) page presse : uniquement des liens https, aucun fichier interne publié
+for (const l of LANGS) {
+  const h = pages[`${l}/${c[l].press.slug}`] || "";
+  for (const m of h.matchAll(/<a class="press-card[^"]*" href="([^"]+)"/g)) if (!/^https:\/\//.test(m[1].replace(/&amp;/g, "&"))) err(`${l}/${c[l].press.slug} : lien non https ${m[1]}`);
+}
+{
+  const walkAll = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walkAll(path.join(d, e.name)) : [e.name]);
+  for (const n of walkAll(DIST)) if (/\.(xlsx?|csv|docx?)$/i.test(n)) err(`fichier interne publié : ${n}`);
 }
 // 3) données légales identiques et présentes dans chaque langue
 for (const l of LANGS) {
@@ -63,6 +72,7 @@ for (const l of LANGS) {
   const foot = (h.match(/<footer[\s\S]*?<\/footer>/) || [""])[0];
   if (!text(foot).includes(s.street) || (s.phone && !text(foot).includes(s.phone))) err(`${l}/ : adresse ou téléphone absent du pied de page`);
   if (!h.includes('href="faq/"')) err(`${l}/ : lien FAQ manquant`);
+  if (!h.includes(`href="${c[l].press.slug}/"`)) err(`${l}/ : lien vers la page presse manquant`);
   if (!/Jobst/.test(h)) err(`${l}/ : crédit photo manquant`);
   if (!h.includes(c[l].footer.about)) err(`${l}/ : texte de pied de page manquant`);
 }
@@ -107,5 +117,5 @@ if (!/Sitemap:/.test(robots) || /Disallow:\s*\//.test(robots)) err("robots.txt :
   if (!llms.includes(s.email) || !/Frequently asked questions/.test(llms)) err("llms.txt incomplet");
 }
 
-console.log(errors.length ? "PROBLÈMES :\n- " + errors.join("\n- ") : `OK — ${Object.keys(pages).length} pages (3 langues × 4 types) cohérentes.`);
+console.log(errors.length ? "PROBLÈMES :\n- " + errors.join("\n- ") : `OK — ${Object.keys(pages).length} pages (3 langues × 5 types) cohérentes.`);
 process.exit(errors.length ? 1 : 0);
