@@ -228,7 +228,9 @@
     "kinds": {
       "interview": "Interview",
       "news": "Meldung",
-      "portrait": "Porträt"
-    }
+      "portrait": "Porträt",
+      "article": "Artikel"
+    },
+    "intro_with_clients": "Medienecho für unsere Kund:innen sowie Artikel und Interviews über imp-ress."
   }
 }

@@ -181,3 +181,4 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 @media (max-width:900px){.press-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.press-grid{grid-template-columns:1fr}.press-card.featured{padding:28px 24px}.press-card.featured .press-media{font-size:1.7rem}}
 @media (prefers-reduced-motion:reduce){.press-card:hover{transform:none}}
+.press-card.featured .press-client{color:var(--gold-soft);font-size:.9rem}

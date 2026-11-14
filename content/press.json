@@ -104,11 +104,12 @@
     {
       "client": "Expo 2027 Belgrad",
       "media": "KURIER",
-      "kind": "news",
+      "kind": "article",
       "date": "2026-10-23",
       "title": "Expo 2027 in Belgrad bringt erstmals seit Jahren Direktverbindung",
       "title_lang": "de",
-      "url": "https://kurier.at/leben/reise/expo-2027-belgrad-serbien-weltausstellung-oebb-bahn-direktverbindung-wien/403200415"
+      "url": "https://kurier.at/leben/reise/expo-2027-belgrad-serbien-weltausstellung-oebb-bahn-direktverbindung-wien/403200415",
+      "featured": true
     }
   ]
 }

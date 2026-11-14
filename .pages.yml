@@ -108,7 +108,9 @@ content:
       options:
         values:
         - value: news
-          label: Article / brève
+          label: Brève / Meldung
+        - value: article
+          label: Article
         - value: interview
           label: Interview
         - value: portrait
@@ -159,7 +161,9 @@ content:
       options:
         values:
         - value: news
-          label: Article / brève
+          label: Brève / Meldung
+        - value: article
+          label: Article
         - value: interview
           label: Interview
         - value: portrait

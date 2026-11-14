@@ -516,8 +516,8 @@ function buildPress(lang, c, s) {
   const hasClients = press.clients.length > 0;
   const tabs = hasClients
     ? `    <nav class="press-tabs" aria-label="${esc(c.press.title)}">
-      <a href="#about">${esc(c.press.tab_about)}</a>
       <a href="#clients">${esc(c.press.tab_clients)}</a>
+      <a href="#about">${esc(c.press.tab_about)}</a>
     </nav>\n`
     : "";
   const group = (id, heading, items, isClient) => `    <div class="press-group" id="${id}">
@@ -551,9 +551,9 @@ ${hreflangs}
   <section class="legal press-page">
     <p class="eyebrow">${esc(c.press.eyebrow)}</p>
     <h1>${esc(c.press.title)}</h1>
-    <p class="press-intro">${esc(c.press.intro)}${filled(c.press.lang_note) ? ` <span class="press-note">${esc(c.press.lang_note)}</span>` : ""}</p>
-${tabs}${group("about", c.press.tab_about, press.about, false)}
-${hasClients ? group("clients", c.press.tab_clients, press.clients, true) + "\n" : ""}    <p class="legal-back"><a href="${prefix}${lang}/">&larr; ${esc(c.privacy.back)}</a></p>
+    <p class="press-intro">${esc(hasClients && filled(c.press.intro_with_clients) ? c.press.intro_with_clients : c.press.intro)}${filled(c.press.lang_note) ? ` <span class="press-note">${esc(c.press.lang_note)}</span>` : ""}</p>
+${tabs}${hasClients ? group("clients", c.press.tab_clients, press.clients, true) + "\n" : ""}${group("about", c.press.tab_about, press.about, false)}
+    <p class="legal-back"><a href="${prefix}${lang}/">&larr; ${esc(c.privacy.back)}</a></p>
   </section>
 </main>
 <footer>

@@ -228,7 +228,9 @@
     "kinds": {
       "interview": "Interview",
       "news": "Article",
-      "portrait": "Portrait"
-    }
+      "portrait": "Portrait",
+      "article": "Article"
+    },
+    "intro_with_clients": "Retombées presse pour nos clients, ainsi qu'articles et interviews consacrés à imp-ress."
   }
 }
