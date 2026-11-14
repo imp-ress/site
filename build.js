@@ -485,7 +485,7 @@ const fmtDate = (d, lang) => {
 };
 
 function pressCard(a, lang, c, isClient) {
-  const en = lang === "en" && filled(a.url_en);
+  const en = lang !== "de" && filled(a.url_en); // FR et EN : version anglaise si elle existe
   const url = en ? a.url_en : a.url;
   const title = en && filled(a.title_en) ? a.title_en : a.title;
   const tLang = en ? "en" : a.title_lang || "de";
