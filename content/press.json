@@ -12,7 +12,7 @@
       "featured": true
     },
     {
-      "media": "HORIZONT",
+      "media": "Horizont",
       "kind": "news",
       "date": "2026-10-14",
       "title": "Ilona Perrot gründet neue Agentur imp-ress",
@@ -44,7 +44,7 @@
       "url": "https://medianet.at/news/marketing-and-media/ilona-perrot-gruendet-pr-agentur-imp-ress-77793.html"
     },
     {
-      "media": "LEADERSNET",
+      "media": "Leadersnet",
       "kind": "portrait",
       "date": "2026-10-15",
       "title": "Opinion Leader des Tages: Ilona Perrot",
@@ -60,7 +60,7 @@
       "url": "https://www.reiseinsider.at/details/ilona-perrot-gruendet-eigene-pr-agentur-in-wien"
     },
     {
-      "media": "BLACHREPORT",
+      "media": "Blachreport",
       "kind": "news",
       "date": "2026-10-16",
       "title": "Ilona Perrot gründet imp-ress PR & Consulting in Wien",
@@ -76,7 +76,7 @@
       "url": "https://www.prreport.de/singlenews/uid-980272/ilona-perrot-gruendet-agentur-imp-ress/"
     },
     {
-      "media": "journalistin.at",
+      "media": "Österreichs Journalist:in",
       "kind": "news",
       "date": "2026-10-27",
       "title": "Ilona Perrot gründet imp-ress PR & Consulting",
@@ -84,7 +84,7 @@
       "url": "https://www.journalistin.at/singlenews/uid-980232/ilona-perrot-gruendet-imp-ress-pr-consulting/"
     },
     {
-      "media": "O.VATION",
+      "media": "O.Vation",
       "kind": "news",
       "date": "2026-10-27",
       "title": "Ilona Perrot gründet imp-ress PR & Consulting in Wien",
@@ -103,7 +103,7 @@
   "clients": [
     {
       "client": "Expo 2027 Belgrad",
-      "media": "KURIER",
+      "media": "Kurier",
       "kind": "article",
       "date": "2026-10-23",
       "title": "Expo 2027 in Belgrad bringt erstmals seit Jahren Direktverbindung",
