@@ -44,7 +44,7 @@ for (const [k, h] of Object.entries(pages)) {
   if (/Österreich|Autriche|Austria/.test(text(h).match(/Kärntner[^\n]{0,40}/)?.[0] || "")) err(`${k} : pays dans l'adresse`);
   // liens internes
   for (const m of h.matchAll(/href="(\.{1,2}\/[^"#]*)"/g)) {
-    const t = path.join(DIST, k, m[1]);
+    const t = path.join(DIST, k, m[1].split("?")[0]);
     if (!fs.existsSync(t) && !fs.existsSync(path.join(t, "index.html"))) err(`${k} : lien cassé ${m[1]}`);
   }
 }
@@ -100,7 +100,7 @@ for (const [k, h] of Object.entries(pages)) {
   if (!h.includes('class="skip-link"') || !h.includes('<main id="main">')) err(`${k} : lien d'évitement ou <main id> absent`);
   if (/noindex/.test(h)) err(`${k} : noindex présent`);
   for (const m of h.matchAll(/<img\b[^>]*>/g)) if (!/ alt="[^"]+"/.test(m[0]) || !/ width=/.test(m[0]) || !/ height=/.test(m[0])) err(`${k} : image sans alt/width/height`);
-  for (const m of h.matchAll(/(?:src|href)="((?:\.\.\/)+assets\/[^"]+)"/g)) if (!fs.existsSync(path.join(DIST, k, m[1]))) err(`${k} : ressource manquante ${m[1]}`);
+  for (const m of h.matchAll(/(?:src|href)="((?:\.\.\/)+assets\/[^"]+)"/g)) if (!fs.existsSync(path.join(DIST, k, m[1].split("?")[0]))) err(`${k} : ressource manquante ${m[1]}`);
   for (const m of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { JSON.parse(m[1]); } catch (e) { err(`${k} : JSON-LD invalide`); }
   }

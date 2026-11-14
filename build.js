@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = __dirname;
+const CSS_VER = require("crypto").createHash("md5").update(require("fs").readFileSync(require("path").join(ROOT, "static", "assets", "style.css"))).digest("hex").slice(0, 8);
 const DIST = path.join(ROOT, "dist");
 const STATIC = path.join(ROOT, "static");
 const LANGS = ["fr", "de", "en"];
@@ -248,7 +249,7 @@ ${ldJson}
 
 <link rel="preload" href="${prefix}assets/fonts/cormorant-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 ${hasSmall ? `<link rel="preload" as="image" href="${rel(photoSmall, prefix)}" imagesrcset="${rel(photoSmall, prefix)} 800w, ${rel(s.photo, prefix)} 1200w" imagesizes="(max-width: 900px) 90vw, 400px" fetchpriority="high">` : ""}
-<link rel="stylesheet" href="${prefix}assets/style.css">
+<link rel="stylesheet" href="${prefix}assets/style.css?v=${CSS_VER}">
 </head>
 <body>
 
@@ -367,7 +368,7 @@ function buildPrivacy(lang, c, s) {
 <meta name="theme-color" content="#0B1655">
 ${hreflangs}
 <link rel="preload" href="${prefix}assets/fonts/cormorant-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${prefix}assets/style.css">
+<link rel="stylesheet" href="${prefix}assets/style.css?v=${CSS_VER}">
 </head>
 <body>
 <header>
@@ -434,7 +435,7 @@ ${hreflangs}
 ${JSON.stringify(ld, null, 2).replace(/</g, "\\u003c")}
 </script>
 <link rel="preload" href="${prefix}assets/fonts/cormorant-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${prefix}assets/style.css">
+<link rel="stylesheet" href="${prefix}assets/style.css?v=${CSS_VER}">
 </head>
 <body>
 <header>
@@ -538,7 +539,7 @@ ${items.map((a) => pressCard(a, lang, c, isClient)).join("\n")}
 <meta name="theme-color" content="#0B1655">
 ${hreflangs}
 <link rel="preload" href="${prefix}assets/fonts/cormorant-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${prefix}assets/style.css">
+<link rel="stylesheet" href="${prefix}assets/style.css?v=${CSS_VER}">
 </head>
 <body>
 <header>
@@ -612,7 +613,7 @@ function buildLegal(lang, c, s) {
 <meta name="theme-color" content="#0B1655">
 ${hreflangs}
 <link rel="preload" href="${prefix}assets/fonts/cormorant-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${prefix}assets/style.css">
+<link rel="stylesheet" href="${prefix}assets/style.css?v=${CSS_VER}">
 </head>
 <body>
 <header>
@@ -900,7 +901,7 @@ function build404(s) {
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0B1655">
 <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v=${CSS_VER}">
 </head>
 <body>
 <header>
