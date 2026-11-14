@@ -156,7 +156,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .press-page{max-width:1080px}
 .press-page h1{margin-bottom:14px}
-.press-intro{max-width:60ch;margin-bottom:40px}
+.press-intro{max-width:none;margin-bottom:40px}
 .press-note{display:block;margin-top:6px;font-size:.85rem;font-style:italic}
 .press-tabs{display:flex;flex-wrap:wrap;gap:28px;margin:-10px 0 34px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
 .press-tabs a{color:var(--navy);padding-bottom:6px;border-bottom:1px solid var(--gold)}
@@ -173,7 +173,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .press-card.featured{grid-column:1/-1;background:var(--navy-deep);border-color:var(--navy-deep);padding:34px 36px 36px}
 .press-card.featured .press-meta{color:var(--gold-soft)}
 .press-card.featured .press-media{color:var(--white);font-size:2rem}
-.press-card.featured .press-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--cream-deep);max-width:52ch}
+.press-card.featured .press-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--cream-deep);max-width:none;padding-right:24px}
 .press-card.featured .press-arrow{color:var(--gold-soft);top:30px;right:34px}
 .press-teaser{text-align:center;margin-top:46px}
 .press-teaser a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--gold-soft);border-bottom:1px solid rgba(217,195,152,.5);padding-bottom:4px}

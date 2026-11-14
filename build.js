@@ -551,7 +551,7 @@ ${hreflangs}
   <section class="legal press-page">
     <p class="eyebrow">${esc(c.press.eyebrow)}</p>
     <h1>${esc(c.press.title)}</h1>
-    <p class="press-intro">${esc(hasClients && filled(c.press.intro_with_clients) ? c.press.intro_with_clients : c.press.intro)}${filled(c.press.lang_note) ? ` <span class="press-note">${esc(c.press.lang_note)}</span>` : ""}</p>
+    <p class="press-intro">${esc(hasClients && filled(c.press.intro_with_clients) ? c.press.intro_with_clients : c.press.intro).replace(/(imp)-(ress)/gi, "$1&#8209;$2")}${filled(c.press.lang_note) ? ` <span class="press-note">${esc(c.press.lang_note)}</span>` : ""}</p>
 ${tabs}${hasClients ? group("clients", c.press.tab_clients, press.clients, true) + "\n" : ""}${group("about", c.press.tab_about, press.about, false)}
     <p class="legal-back"><a href="${prefix}${lang}/">&larr; ${esc(c.privacy.back)}</a></p>
   </section>
