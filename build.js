@@ -826,7 +826,7 @@ ${purls}
 // ---------- finitions communes à toutes les pages (icônes, partage, accessibilité) ----------
 function polish(html, s, lang) {
   const site = s.site_url.replace(/\/+$/, "");
-  const m = html.match(/href="((?:\.\.\/)*)assets\/style\.css"/);
+  const m = html.match(/href="((?:\.\.\/)*)assets\/style\.css(?:\?[^"]*)?"/);
   const prefix = m ? m[1] : "";
   const get = (re) => { const r = html.match(re); return r ? r[1] : ""; };
   const head = [];
